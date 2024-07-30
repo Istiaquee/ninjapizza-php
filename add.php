@@ -5,19 +5,25 @@ if(isset($_POST['submit'])){
         echo "email is empty" . "</br>";
     }
     else{
-        echo htmlspecialchars($_POST['email'])." -is your email" . "</br>";
+        if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+            echo 'Enter a valid Email';
+        }
     }
     if(empty($_POST['title'])){
         echo "title is empty" . "</br>";
     }
     else{
-        echo htmlspecialchars($_POST['title'])." -is your title" . "</br>";
+        if(!preg_match("/^[a-zA-Z-' ]*$/",$_POST['title'])){
+            echo 'Enter a valid title';
+        }
     }
     if(empty($_POST['ingredient'])){
-        echo "ingredient is empty" . "</br>";
+        echo 'Ingredient is empty';
     }
     else{
-        echo htmlspecialchars($_POST['ingredient'])." -is your ingredient" . "</br>";
+        if(!preg_match('/^([a-zA-Z0-9]+)(,[a-zA-Z0-9]+)*$/',$_POST['ingredient'])){
+            echo 'Enter a comma seperator ingredients';
+        }
     }
 }
 
