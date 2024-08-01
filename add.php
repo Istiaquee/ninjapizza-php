@@ -1,28 +1,37 @@
 <?php 
+$email = $title = $ingredient = '';;
+$errors = ['email'=>'', 'title'=>'', 'ingredient'=>''];
 
 if(isset($_POST['submit'])){
+    $email =$_POST['email'];
+    $title =$_POST['title'];
+    $ingredient = $_POST['ingredient'];
+    //check email
     if(empty($_POST['email'])){
-        echo "email is empty" . "</br>";
-    }
-    else{
+        $errors['email'] = 'email is empty';
+    }else{
         if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
-            echo 'Enter a valid Email';
+            $errors['email'] = 'Enter a valid Email';
         }
     }
+
+
+    //check title
     if(empty($_POST['title'])){
-        echo "title is empty" . "</br>";
-    }
-    else{
+        $errors['title']= 'title is empty';
+    }else{
         if(!preg_match("/^[a-zA-Z-' ]*$/",$_POST['title'])){
-            echo 'Enter a valid title';
+            $errors['title']= 'Enter a valid title';
         }
     }
+
+
+    //check ingredient
     if(empty($_POST['ingredient'])){
-        echo 'Ingredient is empty';
-    }
-    else{
+        $errors['ingredient']= 'Ingredient is empty';
+    }else{
         if(!preg_match('/^([a-zA-Z0-9]+)(,[a-zA-Z0-9]+)*$/',$_POST['ingredient'])){
-            echo 'Enter a comma seperator ingredients';
+            $errors['ingredient']= 'Enter a comma seperator ingredients';
         }
     }
 }
@@ -44,15 +53,18 @@ if(isset($_POST['submit'])){
                 <form class="mb-3" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="coffeeemail" aria-describedby="emailHelp" name="email">
+                        <input type="text" class="form-control" id="coffeeemail" aria-describedby="emailHelp" name="email" value="<?php echo htmlspecialchars($email); ?> ">
+                        <div id="errorEmail" class="text-danger"> <?php echo $errors['email']; ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Coffee Title</label>
-                        <input type="text" class="form-control" id="coffeetitle" aria-describedby="title" name="title">
+                        <input type="text" class="form-control" id="coffeetitle" aria-describedby="title" name="title" value="<?php echo htmlspecialchars($title); ?> ">
+                        <div id="errorEmail" class="text-danger"> <?php echo $errors['title']; ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Coffee Ingredients (comma seperated)</label>
-                        <input type="text" class="form-control" id="coffeeinge" aria-describedby="ingredient" name="ingredient">
+                        <input type="text" class="form-control" id="coffeeinge" aria-describedby="ingredient" name="ingredient" value="<?php echo htmlspecialchars($ingredient);?>">
+                        <div id="errorEmail" class="text-danger"> <?php echo $errors['ingredient']; ?></div>
                     </div>                
                     <div class="text-center">
                     <button type="submit" class="btn btn-primary"name="submit">Submit</button>
