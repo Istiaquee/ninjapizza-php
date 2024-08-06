@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
 
     //check title
     if(empty($_POST['title'])){
-        $errors['title']= 'title is empty';
+        $errors['title'] = 'title is empty';
     }else{
         if(!preg_match("/^[a-zA-Z-' ]*$/",$_POST['title'])){
             $errors['title']= 'Enter a valid title';
@@ -53,18 +53,18 @@ if(isset($_POST['submit'])){
                 <form class="mb-3" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="coffeeemail" aria-describedby="emailHelp" name="email" value="<?php echo htmlspecialchars($email); ?> ">
+                        <input type="email" class="form-control" id="coffeeemail" aria-describedby="emailHelp" name="email" value="<?php echo htmlspecialchars($email); ?>">
                         <div id="errorEmail" class="text-danger"> <?php echo $errors['email']; ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Coffee Title</label>
-                        <input type="text" class="form-control" id="coffeetitle" aria-describedby="title" name="title" value="<?php echo htmlspecialchars($title); ?> ">
-                        <div id="errorEmail" class="text-danger"> <?php echo $errors['title']; ?></div>
+                        <input type="text" class="form-control" id="coffeetitle" aria-describedby="titlehelp" name="title" value="<?php echo htmlspecialchars($title); ?>">
+                        <div id="errortitle" class="text-danger"> <?php echo $errors['title']; ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Coffee Ingredients (comma seperated)</label>
-                        <input type="text" class="form-control" id="coffeeinge" aria-describedby="ingredient" name="ingredient" value="<?php echo htmlspecialchars($ingredient);?>">
-                        <div id="errorEmail" class="text-danger"> <?php echo $errors['ingredient']; ?></div>
+                        <input type="text" class="form-control" id="coffeeinge" aria-describedby="ingredient" name="ingredient" value="<?php echo htmlspecialchars($ingredient); ?>">
+                        <div id="erroringre" class="text-danger"> <?php echo $errors['ingredient']; ?></div>
                     </div>                
                     <div class="text-center">
                     <button type="submit" class="btn btn-primary"name="submit">Submit</button>
