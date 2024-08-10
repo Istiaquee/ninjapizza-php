@@ -1,4 +1,12 @@
 <?php 
+
+$conn = mysqli_connect('localhost','admin','admin','chillfee');
+//check connection
+if(!$conn){
+    echo 'Database error' . mysqli_connect_error();
+}
+
+
 $email = $title = $ingredient = '';;
 $errors = ['email'=>'', 'title'=>'', 'ingredient'=>''];
 
@@ -33,6 +41,22 @@ if(isset($_POST['submit'])){
         if(!preg_match('/^([a-zA-Z0-9]+)(,[a-zA-Z0-9]+)*$/',$_POST['ingredient'])){
             $errors['ingredient']= 'Enter a comma seperator ingredients';
         }
+    }
+    if(array_filter($errors)){
+
+    } else{
+        $email = mysqli_real_escape_string($conn,$_POST['email']);
+        $title = mysqli_real_escape_string($conn,$_POST['title']);
+        $ingredient = mysqli_real_escape_string($conn,$_POST['ingredient']);
+
+        $sql= "INSERT INTO coffees(title,ingredients,email) VALUES( '$title', '$ingredient', '$email')";
+
+        if(mysqli_query($conn,$sql)){
+            header('Location: index.php');
+        }else{
+            echo 'error' . mysqli_connect_error();
+        }
+
     }
 }
 

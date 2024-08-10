@@ -9,14 +9,14 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-3 text-success" href="#">Chillfee</a>
+            <a class="navbar-brand fw-bold fs-3 text-success" href="index.php">Chillfee</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link addbtn" aria-current="page" href="#">Add a Coffee</a>
+                    <a class="nav-link addbtn" aria-current="page" href="add.php">Add a Coffee</a>
                 </li>
             </ul>
             </div>

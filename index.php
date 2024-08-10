@@ -20,6 +20,7 @@
     mysqli_close($conn);
 
     // print_r($coffees);
+    
 
 ?>
 
@@ -30,17 +31,21 @@
 
 <div class="container my-5">
     <div class="row">
-        <?php foreach($coffees as $coffee){ ?>
+        <?php foreach($coffees as $coffee): ?>
             <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> <?php echo htmlspecialchars($coffee['title']); ?>  </h5>
-                    <h6 class="card-subtitle mb-2 text-muted"> <?php echo htmlspecialchars($coffee['ingredients']); ?> </h6>
+                    <ul class="card-subtitle mb-2 text-muted">
+                    <?php foreach(explode(',', $coffee['ingredients']) as $ing): ?>
+                        <li> <?php echo htmlspecialchars($ing); ?> </li>
+                    <?php endforeach; ?>
+                    </ul>
                     <a href="#" class="card-link">More Info</a>
                 </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php endforeach; ?>
     </div>
 </div>
 
